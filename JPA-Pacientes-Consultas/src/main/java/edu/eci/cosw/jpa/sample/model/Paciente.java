@@ -5,7 +5,10 @@ package edu.eci.cosw.jpa.sample.model;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -14,27 +17,22 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "PACIENTES")
-public class Paciente  implements java.io.Serializable {
+public class Paciente implements java.io.Serializable {
 
+@Id
      private PacienteId id;
+@Column(name = "nombre")
      private String nombre;
+@Column(name = "fecha_nacimiento")
      private Date fechaNacimiento;
-     private Set<Consulta> consultas = new HashSet<>(0);
 
     public Paciente() {
     }
-
-	
+    
     public Paciente(PacienteId id, String nombre, Date fechaNacimiento) {
         this.id = id;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
-    }
-    public Paciente(PacienteId id, String nombre, Date fechaNacimiento, Set<Consulta> consultas) {
-       this.id = id;
-       this.nombre = nombre;
-       this.fechaNacimiento = fechaNacimiento;
-       this.consultas = consultas;
     }
    
     public PacienteId getId() {
@@ -58,17 +56,6 @@ public class Paciente  implements java.io.Serializable {
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
-    public Set<Consulta> getConsultas() {
-        return this.consultas;
-    }
-    
-    public void setConsultas(Set<Consulta> consultases) {
-        this.consultas = consultases;
-    }
-
-
-
-
 }
 
 
