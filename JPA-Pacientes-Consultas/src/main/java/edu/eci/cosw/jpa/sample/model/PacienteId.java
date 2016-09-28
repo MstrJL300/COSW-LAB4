@@ -51,8 +51,12 @@ public class PacienteId  implements java.io.Serializable {
 		 if ( !(other instanceof PacienteId) ) return false;
 		 PacienteId castOther = ( PacienteId ) other; 
          
-		 return (this.getId()==castOther.getId())
- && ( (this.getTipoId()==castOther.getTipoId()) || ( this.getTipoId()!=null && castOther.getTipoId()!=null && this.getTipoId().equals(castOther.getTipoId()) ) );
+		 return (this.getId() == castOther.getId()) && 
+                        ( 
+                            (this.getTipoId() == castOther.getTipoId()) || 
+                            (this.getTipoId()!=null && castOther.getTipoId()!=null && 
+                             this.getTipoId().equals(castOther.getTipoId())) 
+                        );
    }
    
    public int hashCode() {

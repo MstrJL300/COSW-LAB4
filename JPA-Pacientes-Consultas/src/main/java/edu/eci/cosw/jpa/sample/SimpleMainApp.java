@@ -16,6 +16,7 @@
  */
 package edu.eci.cosw.jpa.sample;
 
+import edu.eci.cosw.jpa.sample.model.Paciente;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -34,10 +35,12 @@ public class SimpleMainApp {
         Session s=sf.openSession();
         Transaction tx=s.beginTransaction();
         
+//        Paciente p = (Paciente) s.load(Paciente.class, s);
+//        System.out.println("Employee ID= "+p.getId().getId());
+        
         tx.commit();    
         s.close();
         sf.close();
-
     }
 
     public static SessionFactory getSessionFactory() {
