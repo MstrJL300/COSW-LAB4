@@ -11,6 +11,7 @@ import javax.persistence.Table;
  */
 
 @Embeddable
+@Table(name = "PACIENTES")
 public class PacienteId  implements java.io.Serializable {
 
      private int id;
