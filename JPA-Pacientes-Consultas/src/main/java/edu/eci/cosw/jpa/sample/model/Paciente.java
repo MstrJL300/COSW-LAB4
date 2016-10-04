@@ -73,10 +73,10 @@ public class Paciente implements java.io.Serializable {
     }
         
     @OneToMany
-    @JoinColumns({
-        @JoinColumn(name="PACIENTES_id", referencedColumnName="id", nullable=false),
-        @JoinColumn(name="PACIENTES_tipo_id`", referencedColumnName="tipo_id", nullable=false)
-    })
+//    @JoinColumns({
+//        @JoinColumn(name="PACIENTES_id", referencedColumnName="id", nullable=false),
+//        @JoinColumn(name="PACIENTES_tipo_id", referencedColumnName="tipo_id", nullable=false)
+//    })
     public Set<Consulta> getConsultas() {
         return this.consultas;
     }

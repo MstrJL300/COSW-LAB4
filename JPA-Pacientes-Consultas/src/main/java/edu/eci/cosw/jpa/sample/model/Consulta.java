@@ -4,12 +4,9 @@ package edu.eci.cosw.jpa.sample.model;
 
 import java.util.Date;
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
@@ -18,7 +15,6 @@ import javax.persistence.Temporal;
  */
 
 @Entity
-//@Embeddable
 @Table(name = "CONSULTAS")
 public class Consulta  implements java.io.Serializable {
    
