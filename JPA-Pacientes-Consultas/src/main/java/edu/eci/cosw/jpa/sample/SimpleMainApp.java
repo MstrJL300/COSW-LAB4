@@ -17,6 +17,10 @@
 package edu.eci.cosw.jpa.sample;
 
 import edu.eci.cosw.jpa.sample.model.Paciente;
+import edu.eci.cosw.jpa.sample.model.PacienteId;
+import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -30,13 +34,18 @@ import org.hibernate.service.ServiceRegistry;
  */
 public class SimpleMainApp {
    
-    public static void main(String a[]){
+    public static void main(String a[]) throws ParseException{
         SessionFactory sf=getSessionFactory();
         Session s=sf.openSession();
         Transaction tx=s.beginTransaction();
-        
-//        Paciente p = (Paciente) s.load(Paciente.class, s);
-//        System.out.println("Employee ID= "+p.getId().getId());
+                
+        Paciente pid = new PacienteId(12, "cc");
+////        s.save(pid);
+//        PacienteId p = (PacienteId) s.load(PacienteId.class, pid);
+//        System.out.println("Pacient ID= "+p.getId());
+//        SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy");
+//        Paciente paciente = new Paciente(p, "A", sdf.parse("12-12-1990"));
+//        System.out.println("Consulta= "+paciente.getNombre());
         
         tx.commit();    
         s.close();
