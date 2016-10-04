@@ -5,11 +5,16 @@ package edu.eci.cosw.jpa.sample.model;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -43,8 +48,16 @@ public class Paciente implements java.io.Serializable {
        this.fechaNacimiento = fechaNacimiento;
        this.consultas = consultas;
     }
-   
-    @EmbeddedId
+//    @EmbeddedId
+//    @Embedded
+//    @AttributeOverrides({
+//       @AttributeOverride(name = "id", 
+//          column = @Column(name = "id")),
+//       @AttributeOverride(name = "tipoId", 
+//          column = @Column(name = "tipo_id"))
+//    })
+//    @ManyToOne
+    @Id
     public PacienteId getId() {
         return this.id;
     }
@@ -72,7 +85,7 @@ public class Paciente implements java.io.Serializable {
         this.fechaNacimiento = fechaNacimiento;
     }
         
-    @OneToMany
+//    @OneToMany(targetEntity=Consulta.class)
 //    @JoinColumns({
 //        @JoinColumn(name="PACIENTES_id", referencedColumnName="id", nullable=false),
 //        @JoinColumn(name="PACIENTES_tipo_id", referencedColumnName="tipo_id", nullable=false)
