@@ -39,9 +39,9 @@ public class SimpleMainApp {
         Session s=sf.openSession();
         Transaction tx=s.beginTransaction();
         
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy");
-                
-        Paciente paciente = new Paciente(new PacienteId(1, "cc"), "A", sdf.parse("12-12-1990"));
+//        SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy");
+//                
+//        Paciente paciente = new Paciente(new PacienteId(1, "cc"), "A", sdf.parse("12-12-1990"));
 //        Paciente pLoad = (Paciente) s.load(Paciente.class, paciente);
 //        System.out.println("Pacient ID= "+pLoad.getId());
 //        
