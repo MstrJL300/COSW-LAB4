@@ -24,8 +24,6 @@ import javax.persistence.Temporal;
  */
 
 @Entity
-//@Embeddable
-@Table(name = "PACIENTES")
 public class Paciente implements java.io.Serializable {
 
      private PacienteId id;
@@ -48,7 +46,7 @@ public class Paciente implements java.io.Serializable {
        this.fechaNacimiento = fechaNacimiento;
        this.consultas = consultas;
     }
-//    @EmbeddedId
+    
 //    @Embedded
 //    @AttributeOverrides({
 //       @AttributeOverride(name = "id", 
@@ -57,7 +55,8 @@ public class Paciente implements java.io.Serializable {
 //          column = @Column(name = "tipo_id"))
 //    })
 //    @ManyToOne
-    @Id
+//    @Id
+    @EmbeddedId
     public PacienteId getId() {
         return this.id;
     }
@@ -86,6 +85,7 @@ public class Paciente implements java.io.Serializable {
     }
         
 //    @OneToMany(targetEntity=Consulta.class)
+//    @ManyToOne(targetEntity=Consulta.class)
 //    @JoinColumns({
 //        @JoinColumn(name="PACIENTES_id", referencedColumnName="id", nullable=false),
 //        @JoinColumn(name="PACIENTES_tipo_id", referencedColumnName="tipo_id", nullable=false)
@@ -98,5 +98,3 @@ public class Paciente implements java.io.Serializable {
         this.consultas = consultases;
     }
 }
-
-

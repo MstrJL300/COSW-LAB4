@@ -33,24 +33,11 @@ import org.hibernate.service.ServiceRegistry;
  * @author hcadavid
  */
 public class SimpleMainApp {
-   
-    public static void main(String a[]) throws ParseException{
+    
+    public static void main(String a[]){
         SessionFactory sf=getSessionFactory();
         Session s=sf.openSession();
         Transaction tx=s.beginTransaction();
-        
-//        SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy");
-//                
-//        Paciente paciente = new Paciente(new PacienteId(1, "cc"), "A", sdf.parse("12-12-1990"));
-//        Paciente pLoad = (Paciente) s.load(Paciente.class, paciente);
-//        System.out.println("Pacient ID= "+pLoad.getId());
-//        
-//        s.save(pid);
-//        PacienteId p = (PacienteId) s.load(PacienteId.class, pid);
-//        System.out.println("Pacient ID= "+p.getId());
-//        SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy");
-//        Paciente paciente = new Paciente(p, "A", sdf.parse("12-12-1990"));
-//        System.out.println("Consulta= "+paciente.getNombre());
         
         tx.commit();    
         s.close();
