@@ -16,11 +16,16 @@
  */
 package edu.eci.cosw.jpa.sample;
 
+import edu.eci.cosw.jpa.sample.model.Consulta;
 import edu.eci.cosw.jpa.sample.model.Paciente;
 import edu.eci.cosw.jpa.sample.model.PacienteId;
 import java.io.Serializable;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Set;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -37,13 +42,30 @@ public class SimpleMainApp {
     public static void main(String a[]) {
         SessionFactory sf=getSessionFactory();
         Session s=sf.openSession();
-        Transaction tx=s.beginTransaction();        
+        Transaction tx=s.beginTransaction(); 
+        
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Calendar cal = Calendar.getInstance();
         
         Paciente pl = (Paciente) s.load(Paciente.class, new PacienteId(1, "cc"));
-        System.out.println("\n"+"||||||||||\n\n"
-                           +pl.getConsultas()+"\n"
-                           +pl.getNombre()
-                           +"\n\n"+"||||||||||");
+        
+        Set<Consulta> setConsultas = pl.getConsultas();
+        
+        System.out.println("CONSULTAS OBTENIDAS: "+"\n"+pl.getConsultas()
+                          +"\n"+"PACIENTE: "+pl.getNombre());
+        
+        setConsultas.add(new Consulta(cal.getTime(), "resumen"));
+        pl.setConsultas(setConsultas);
+        
+        /**
+         * No usar en exceso, esta agregando muchas consultas.
+         * 
+         */
+        s.saveOrUpdate(pl);
+                
+        System.out.println("CONSULTAS NUEVAS OBTENIDAS: "+"\n"+pl.getConsultas()
+                          +"\n"+"PACIENTE: "+pl.getNombre());
+        
         
         tx.commit();    
         s.close();

@@ -24,6 +24,11 @@ public class Consulta  implements java.io.Serializable {
 
     public Consulta() {
     }
+    
+    public Consulta(Date fechaYHora, String resumen) {       
+       this.fechaYHora = fechaYHora;
+       this.resumen = resumen;
+    }
 
     public Consulta(Date fechaYHora, String resumen, Integer pacienteId, String pacienteTipoId) {       
        this.fechaYHora = fechaYHora;
