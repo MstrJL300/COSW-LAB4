@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
+import static javax.persistence.CascadeType.ALL;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
@@ -24,6 +25,7 @@ import javax.persistence.Temporal;
  */
 
 @Entity
+@Table(name = "PACIENTES")
 public class Paciente implements java.io.Serializable {
 
      private PacienteId id;
@@ -54,8 +56,7 @@ public class Paciente implements java.io.Serializable {
 //       @AttributeOverride(name = "tipoId", 
 //          column = @Column(name = "tipo_id"))
 //    })
-//    @ManyToOne
-//    @Id
+    
     @EmbeddedId
     public PacienteId getId() {
         return this.id;
@@ -90,6 +91,11 @@ public class Paciente implements java.io.Serializable {
 //        @JoinColumn(name="PACIENTES_id", referencedColumnName="id", nullable=false),
 //        @JoinColumn(name="PACIENTES_tipo_id", referencedColumnName="tipo_id", nullable=false)
 //    })
+    @OneToMany(/*targetEntity=Consulta.class, */cascade=ALL)
+    @JoinColumns({
+        @JoinColumn(name="PACIENTES_id", referencedColumnName="id", nullable=false),
+        @JoinColumn(name="PACIENTES_tipo_id", referencedColumnName="tipo_id", nullable=false)
+    })
     public Set<Consulta> getConsultas() {
         return this.consultas;
     }

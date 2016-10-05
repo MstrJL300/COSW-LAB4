@@ -25,8 +25,7 @@ public class PacienteId  implements java.io.Serializable {
        this.tipoId = tipoId;
     }
    
-//    @Id
-//    @Column(name = "id")
+    @Column(name = "id")
     public int getId() {
         return this.id;
     }
@@ -35,8 +34,7 @@ public class PacienteId  implements java.io.Serializable {
         this.id = id;
     }
     
-//    @Id
-//    @Column(name = "tipo_id")
+    @Column(name = "tipo_id")
     public String getTipoId() {
         return this.tipoId;
     }
