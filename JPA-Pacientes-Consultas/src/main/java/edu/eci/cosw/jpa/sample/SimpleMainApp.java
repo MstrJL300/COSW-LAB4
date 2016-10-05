@@ -34,10 +34,16 @@ import org.hibernate.service.ServiceRegistry;
  */
 public class SimpleMainApp {
     
-    public static void main(String a[]){
+    public static void main(String a[]) {
         SessionFactory sf=getSessionFactory();
         Session s=sf.openSession();
-        Transaction tx=s.beginTransaction();
+        Transaction tx=s.beginTransaction();        
+        
+        Paciente pl = (Paciente) s.load(Paciente.class, new PacienteId(1, "cc"));
+        System.out.println("\n"+"||||||||||\n\n"
+                           +pl.getConsultas()+"\n"
+                           +pl.getNombre()
+                           +"\n\n"+"||||||||||");
         
         tx.commit();    
         s.close();

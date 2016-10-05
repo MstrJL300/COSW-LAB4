@@ -49,14 +49,6 @@ public class Paciente implements java.io.Serializable {
        this.consultas = consultas;
     }
     
-//    @Embedded
-//    @AttributeOverrides({
-//       @AttributeOverride(name = "id", 
-//          column = @Column(name = "id")),
-//       @AttributeOverride(name = "tipoId", 
-//          column = @Column(name = "tipo_id"))
-//    })
-    
     @EmbeddedId
     public PacienteId getId() {
         return this.id;
@@ -85,13 +77,7 @@ public class Paciente implements java.io.Serializable {
         this.fechaNacimiento = fechaNacimiento;
     }
         
-//    @OneToMany(targetEntity=Consulta.class)
-//    @ManyToOne(targetEntity=Consulta.class)
-//    @JoinColumns({
-//        @JoinColumn(name="PACIENTES_id", referencedColumnName="id", nullable=false),
-//        @JoinColumn(name="PACIENTES_tipo_id", referencedColumnName="tipo_id", nullable=false)
-//    })
-    @OneToMany(/*targetEntity=Consulta.class, */cascade=ALL)
+    @OneToMany(cascade=ALL)
     @JoinColumns({
         @JoinColumn(name="PACIENTES_id", referencedColumnName="id", nullable=false),
         @JoinColumn(name="PACIENTES_tipo_id", referencedColumnName="tipo_id", nullable=false)
